@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Soal 3 </title>
+</head>
+<body>
+    <form method="POST">
+        <label for="input"> Input : </label>
+        <input type="text" name="input" id="input" value="<?php echo isset($_POST['input']) ? $_POST['input'] : ''; ?>" required><br>
+        <input type="submit" value="Periksa">
+    </form>
+
+    <?php 
+    function isBalanced($str) {
+        $stack = [];
+        $bracket_pairs = [
+            ')' => '(',
+            '}' => '{',
+            ']' => '['
+        ];
+
+        $str = str_replace(' ', '', $str);
+        foreach (str_split($str) as $char) {
+            if ($char == '(' || $char == '{' || $char == '[') {
+                array_push($stack, $char);
+            }
+            elseif ($char == ')' || $char == '}' || $char == ']') {
+                if (empty($stack) || array_pop($stack) != $bracket_pairs[$char]) {
+                    return "NO";
+                }
+            }
+        }
+
+        return empty($stack) ? "YES" : "NO";
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $input = $_POST['input'];
+
+        $result = isBalanced($input);
+
+        echo "Output: " . $result;
+    }
+    ?>
+</body>
+</html>
