@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Soal 1 </title>
+</head>
+<body>
+    <form method="POST">
+        <label for="n">Input : </label>
+        <input type="number" name="n" id="n" value="<?php echo isset($_POST['n']) ? $_POST['n'] : ''; ?>" required>
+        <br><br>
+        <input type="submit" value="Hitung">
+    </form>
+
+    <?php 
+    function Hitung($n)
+    {
+        $input = [1];
+        for ($i = 1; $i < $n; $i++) {
+            $next_value = $input[$i - 1] + $i;
+            $input[] = $next_value;
+        }
+
+        return $input;
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $n = (int)$_POST['n'];
+
+        $result = Hitung($n);
+
+        echo "Output : " . implode("-", $result);
+    }
+    ?>
+
+</body>
+</html>
