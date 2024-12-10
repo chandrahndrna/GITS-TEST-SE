@@ -7,16 +7,16 @@
 </head>
 <body>
 <form method="POST">
-        <label for="n">Jumlah Pemain : </label>
+        <label for="n"> Jumlah Pemain : </label>
         <input type="number" name="n" id="n" value="<?php echo isset($_POST['n']) ? $_POST['n'] : ''; ?>" required><br>
 
-        <label for="scores">Skor Pemain : </label>
+        <label for="scores"> Skor Pemain : </label>
         <input type="text" name="scores" id="scores" value="<?php echo isset($_POST['scores']) ? $_POST['scores'] : ''; ?>" required><br>
 
-        <label for="m">Jumlah Permainan yang diikuti GITS : </label>
+        <label for="m"> Jumlah Permainan yang diikuti : </label>
         <input type="number" name="m" id="m" value="<?php echo isset($_POST['m']) ? $_POST['m'] : ''; ?>" required><br>
 
-        <label for="gits_scores">Skor GITS : </label>
+        <label for="gits_scores"> Skor : </label>
         <input type="text" name="gits_scores" id="gits_scores" value="<?php echo isset($_POST['gits_scores']) ? $_POST['gits_scores'] : ''; ?>" required><br>
 
         <input type="submit" value="Hitung">
